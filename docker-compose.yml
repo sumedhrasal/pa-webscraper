@@ -14,12 +14,10 @@ services:
     - 8080:8080
     restart: on-failure:0
     environment:
-      TRANSFORMERS_INFERENCE_API: 'http://0.0.0.0:8080'
-      SPELLCHECK_INFERENCE_API: 'http://0.0.0.0:8080'
-      # TRANSFORMERS_INFERENCE_API: 'http://t2v-transformers:8080'
+      TRANSFORMERS_INFERENCE_API: 'http://t2v-transformers:8080'
       # QNA_INFERENCE_API: 'http://qna-transformers:8080'
       # NER_INFERENCE_API: 'http://ner-transformers:8080'
-      # SPELLCHECK_INFERENCE_API: 'http://text-spellcheck:8080'
+      SPELLCHECK_INFERENCE_API: 'http://text-spellcheck:8080'
       QUERY_DEFAULTS_LIMIT: 25
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
       PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
