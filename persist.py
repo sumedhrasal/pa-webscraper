@@ -1,16 +1,18 @@
 from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores import Chroma
+from langchain.vectorstores import Chroma, Weaviate
 from langchain.document_loaders import TextLoader
 
-import uuid, os
+import uuid, os, weaviate
 
+WEAVIATE_URL = 'http://localhost:8080'
 
 class Persist:
     def __init__(self) -> None:
         self.data_directory = 'data'
         self.embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
-        self.db = Chroma(persist_directory="./chroma_db", embedding_function=self.embedding_function)
+        self.client = weaviate.Client(url=WEAVIATE_URL)
+        # self.db = Chroma(persist_directory="./chroma_db", embedding_function=self.embedding_function)
         pass
 
     def save_content_to_location(self, topic_name, file_contents):
@@ -35,7 +37,9 @@ class Persist:
                 docs = text_splitter.split_documents(documents)
 
                 # load it into Chroma
-                self.db = Chroma.from_documents(docs, self.embedding_function, persist_directory="./chroma_db")
+                # self.db = Chroma.from_documents(docs, self.embedding_function, persist_directory="./chroma_db")
+                # load it into Weaviate
+                self.db = Weaviate.from_documents(docs, self.embedding_function, client=self.client, by_text=False)
         except Exception as e:
             print('Exception occurred to load content in the DB', e)
 
