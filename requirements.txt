@@ -1,2 +1,5 @@
 langchain
 duckduckgo-search
+unstructured
+sentence_transformers
+chromadb
