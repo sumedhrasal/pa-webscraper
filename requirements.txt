@@ -3,3 +3,6 @@ duckduckgo-search
 unstructured
 sentence_transformers
 weaviate-client
+python-dotenv
+streamlit
+watchdog
