@@ -71,7 +71,7 @@ class Persist:
                         'description': f[0:36],
                         'text': text,
                     }, class_name='Knowledge', uuid=f[0:36])
-                    print(record)
+                    # print(record)
         except Exception as e:
             print('Exception occurred to load content in the DB', e)
 
