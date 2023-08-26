@@ -1,4 +1,4 @@
-# Contributing to [Project Name]
+# Contributing to PA-Webscraper
 
 Thank you for your interest in contributing to PA-Webscraper! I welcome contributions from the community to help make this project better. By contributing, you can help fix issues, add new features, improve documentation, and more.
 
